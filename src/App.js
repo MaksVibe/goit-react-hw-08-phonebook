@@ -13,9 +13,6 @@ function App() {
           <Route path="/login"></Route>
           <Route path="/contacts"></Route>
         </Routes>
-        <Route>
-          <NotFound />
-        </Route>
       </Suspense>
     </div>
   );
