@@ -1,3 +1,4 @@
+import s from "./Login.module.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -39,22 +40,30 @@ export default function LoginView() {
   return (
     <div>
       <h1>Login Page</h1>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <label>E-mail</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleChange}
-        />
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-        />
-        <button>Sign in</button>
+      <form onSubmit={handleSubmit} autoComplete="off" className={s.LoginForm}>
+        <label>
+          E-mail:{" "}
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            className={s.LoginInput}
+          />
+        </label>
+        <label>
+          Password:{" "}
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+            className={s.LoginInput}
+          />
+        </label>
+        <button type="submit" className="btn">
+          Sign in
+        </button>
       </form>
       <Outlet />
     </div>

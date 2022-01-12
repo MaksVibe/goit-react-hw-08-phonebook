@@ -12,21 +12,6 @@
     width: 100%;
     max-width: 240px;
   }
-
-  &__btn {
-    padding: 10px 24px;
-
-    background-color: cornflowerblue;
-    color: snow;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-
-    &:hover,
-    &:focus {
-      background-color: royalblue;
-    }
-  }
 }
 
 .regContainer a {
@@ -40,6 +25,6 @@
 }
 
 .regContainer h1 {
-  padding: 20px 0;
+  padding: 0 20px;
   font-size: 24px;
 }

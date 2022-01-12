@@ -1,3 +1,4 @@
+import s from "./UserNav.module.css";
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import authSelectors from "../../redux/authorization/auth-selectors";
@@ -9,16 +10,17 @@ const UserNav = () => {
   const name = useSelector(authSelectors.getUsername);
 
   const handleLogout = (e) => {
-    e.preventDeafault();
     dispatch(logout());
   };
   return (
     <div>
       <header>
-        <span>Hello, {name}</span>
-        <button type="button" onClick={handleLogout}>
-          Logout
-        </button>
+        <div className={s.UserHeader}>
+          <span>Hello, {name}</span>
+          <button type="button" onClick={handleLogout} className="btn">
+            Logout
+          </button>
+        </div>
       </header>
     </div>
   );

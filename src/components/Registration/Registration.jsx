@@ -11,8 +11,7 @@ const Registration = () => {
   const [password, setPass] = useState("");
   const dispatch = useDispatch();
   // const { data } = useGetUserQuery();
-  // const [signupUser] = useSignupUserMutation();
-
+  // const [signupUser, result] = useSignupUserMutation();
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(register({ name, email, password }));
@@ -83,7 +82,7 @@ const Registration = () => {
           title="Please Provide A Valid Email Address !"
           required
         />
-        <button type="submit" className={s.regForm__btn}>
+        <button type="submit" className={"btn"}>
           Register
         </button>
       </form>

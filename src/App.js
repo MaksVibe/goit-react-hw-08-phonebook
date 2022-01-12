@@ -15,9 +15,8 @@ function App() {
       <Suspense fallback={"...loading"}>
         {isLogedIn ? <UserNav /> : <AuthNav />}
         <Routes>
-          <Route index element={<LoginView />} />
-          <Route path="login" element={<LoginView />} />
-          <Route path="register" element={<Registration />} />
+          <Route path="/login" element={<LoginView />} />
+          <Route path="/register" element={<Registration />} />
         </Routes>
       </Suspense>
     </div>
