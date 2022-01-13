@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSliceReducer from "./authorization/auth-slice";
-import { usersApi, filterSlice } from "./todos/todoSlice";
+import { createLogger } from "redux-logger";
+// import { usersApi, filterSlice } from "./todos/todoSlice";
 import {
   persistStore,
   persistReducer,
@@ -12,8 +13,13 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import contactsReducer from "./contacts/contacts-reducer";
+import { filterSlice, usersApi } from "./todos/todoSlice";
 
-const middleware = () => {};
+const logger = createLogger({
+  collapsed: (getState, action, logEntry) => !logEntry.error,
+  timestamp: false,
+});
 
 const authPersistConfig = {
   key: "auth",
@@ -21,18 +27,26 @@ const authPersistConfig = {
   whitelist: ["token"],
 };
 
+const contactsPersistConfig = {
+  key: "items",
+  storage,
+  whitelist: ["items"],
+  blacklist: ["filter"],
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSliceReducer),
-    // [usersApi.reducerPath]: usersApi.reducer,
-    // [filterSlice.name]: filterSlice.reducer,
+    contacts: persistReducer(contactsPersistConfig, contactsReducer),
+    [usersApi.reducerPath]: usersApi.reducer,
+    [filterSlice.name]: filterSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(logger),
   devTools: process.env.NODE_ENV === "development",
   // middleware: getDefaultMiddleware => [
   //   ...getDefaultMiddleware(),

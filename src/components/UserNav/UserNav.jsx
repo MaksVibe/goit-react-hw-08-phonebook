@@ -14,9 +14,12 @@ const UserNav = () => {
   };
   return (
     <div>
-      <header>
-        <div className={s.UserHeader}>
-          <span>Hello, {name}</span>
+      <header className={s.UserHeader}>
+        <NavLink to="contacts" className="btn">
+          Contacts
+        </NavLink>
+        <div className={s.UserWrap}>
+          <span>Hello, {name}!</span>
           <button type="button" onClick={handleLogout} className="btn">
             Logout
           </button>
