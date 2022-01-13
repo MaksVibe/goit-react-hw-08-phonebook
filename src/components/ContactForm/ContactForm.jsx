@@ -1,14 +1,21 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/contacts-operations";
 
 const ContactForm = () => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const dispatch = useDispatch();
+  const getContactname = useSelector((state) =>
+    state.contacts.items.map((item) => item.name)
+  );
 
+  useEffect(() => {
+    console.log(`getContactname`, getContactname.includes("Max"));
+  }, [getContactname]);
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (getContactname.includes(name)) return alert("Contct already exists!");
     dispatch(addContact({ name, number }));
     reset();
   };
