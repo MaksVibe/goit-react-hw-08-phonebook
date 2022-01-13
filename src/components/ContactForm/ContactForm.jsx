@@ -10,9 +10,6 @@ const ContactForm = () => {
     state.contacts.items.map((item) => item.name)
   );
 
-  useEffect(() => {
-    console.log(`getContactname`, getContactname.includes("Max"));
-  }, [getContactname]);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (getContactname.includes(name)) return alert("Contct already exists!");
