@@ -59,6 +59,7 @@ const fetchCurrentUser = createAsyncThunk(
       return data;
     } catch (error) {
       token.unset();
+      return thunkAPI.rejectWithValue("Something went wrong");
     }
   }
 );

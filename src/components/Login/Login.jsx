@@ -1,17 +1,13 @@
 import s from "./Login.module.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router";
 import { login } from "../../redux/authorization/auth-operations";
-// import { useLoginUserMutation } from "../../redux/todos/todoSlice";
 
 export default function LoginView() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  //   const [loginUser] = useLoginUserMutation();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -27,8 +23,6 @@ export default function LoginView() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password }));
-    //   navigate(`/user/${user.id}`);
-    // loginUser({ email, password });
     reset();
   };
 

@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSliceReducer from "./authorization/auth-slice";
 import { createLogger } from "redux-logger";
-// import { usersApi, filterSlice } from "./todos/todoSlice";
 import {
   persistStore,
   persistReducer,
@@ -48,10 +47,6 @@ export const store = configureStore({
       },
     }).concat(logger),
   devTools: process.env.NODE_ENV === "development",
-  // middleware: getDefaultMiddleware => [
-  //   ...getDefaultMiddleware(),
-  //   usersApi.middleware,
-  // ],
 });
 
 export const persistor = persistStore(store);
